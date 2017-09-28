@@ -1,7 +1,5 @@
 //first js code written by Steven Tang
 console.log('Hi!');
-
-var THREE = require('three');
 //so this imports three.js modules and creates a scene.
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
