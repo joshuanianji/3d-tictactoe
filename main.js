@@ -21,7 +21,7 @@ camera.position.z = 5;
 
 //creates a loop that animates the cube
 function animateCube() {
-    requestAnimationFrame(animate);
+    requestAnimationFrame(animateCube);
     cube.rotation.x += 0.1;
     cube.rotation.y += 0.1;
     renderer.render(scene, camera);
