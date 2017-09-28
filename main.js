@@ -27,11 +27,10 @@ function onMouseMove(event) {
   // (-1 to +1) for both components
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
 }
 
-
 function render() {
+  window.requestAnimationFrame(render);
   // update the picking ray with the camera and mouse position
   raycaster.setFromCamera(mouse, camera);
   // calculate objects intersecting the picking ray
@@ -42,9 +41,9 @@ function render() {
   //animateCube
   cube.rotation.x += 0.1;
   cube.rotation.y += 0.1;
-  renderer.render(scene, camera);
 
+  renderer.render(scene, camera);
 }
 
 window.addEventListener('mousemove', onMouseMove, false);
-window.requestAnimationFrame(render);
+render();
