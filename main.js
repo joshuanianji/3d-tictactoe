@@ -1,4 +1,4 @@
-/* global eslint */
+/* global THREE */
 //first js code written by Steven Tang
 console.log('Hi!');
 //so this imports three.js modules and creates a scene.
