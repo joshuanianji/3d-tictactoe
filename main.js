@@ -27,8 +27,4 @@ function animateCube() {
     cube.rotation.y += 0.1;
     renderer.render(scene, camera);
 }
-<<<<<<< HEAD
 animateCube();
-=======
-animateCube();
->>>>>>> 2978410ad26eeda7ef6cd28d987eecbfbbc3e600
