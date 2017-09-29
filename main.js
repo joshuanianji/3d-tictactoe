@@ -10,9 +10,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-var light = new THREE.DirectionalLight(0xffffff, 1);
-light.position.set(1, 1, 1).normalize();
-scene.add(light);
+
 
 //creates a box
 var distance = 3;
@@ -25,6 +23,7 @@ for (var h = 0; h < 3; h++) {
   for (var i = 0; i < 3; i++) {
     for (var j = 0; j < 3; j++) {
       var cube = new THREE.Mesh(geometry, material.clone());
+      cube.shading = THREE.FlatShading;
       cube.position.y = (distance * h) - 3;
       cube.position.x = (distance * i) - 6;
       cube.position.z = (distance * j);
