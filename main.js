@@ -11,21 +11,37 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 //creates a box
+var distance = 3;
 var geometry = new THREE.BoxGeometry(1, 1, 1);
 var material = new THREE.MeshBasicMaterial({
   color: '#fff'
 });
-var cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+var cubes = [];
+for (var h = 0; h < 3; h++) {
+  for (var i = 0; i < 3; i++) {
+    for (var j = 0; j < 3; j++) {
+      var cube = new THREE.Mesh(geometry, material);
+      cube.position.y = (distance * h) - 3;
+      cube.position.x = (distance * i) - 3;
+      cube.position.z = (distance * j);
+      cubes.push(cube);
+      scene.add(cube);
+    }
+  }
+}
 
-camera.position.z = 5;
+camera.position.z = 12;
+camera.position.x = 12;
+camera.rotation.y = 45;
 
 function render() {
   window.requestAnimationFrame(render);
 
-  //animateCube
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
+  //animateCubes
+  cubes.forEach(cube => {
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+  });
 
   renderer.render(scene, camera);
 }
@@ -42,7 +58,11 @@ window.addEventListener('mousedown', () => {
   // calculate objects intersecting the picking ray
   var intersects = raycaster.intersectObjects(scene.children);
   for (var i = 0; i < intersects.length; i++) {
-    if (cube.material.color.equals({r: 1, g: 1, b: 1})) {
+    if (cube.material.color.equals({
+        r: 1,
+        g: 1,
+        b: 1
+      })) {
       intersects[i].object.material.color.set('#ff0000');
     } else {
       intersects[i].object.material.color.set('#fff');
