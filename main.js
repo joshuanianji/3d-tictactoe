@@ -18,13 +18,13 @@ scene.add(light);
 var distance = 3;
 var geometry = new THREE.BoxGeometry(1, 1, 1);
 var material = new THREE.MeshBasicMaterial({
-  color: '#fff'
+  color: 0xffffff
 });
 var cubes = [];
 for (var h = 0; h < 3; h++) {
   for (var i = 0; i < 3; i++) {
     for (var j = 0; j < 3; j++) {
-      var cube = new THREE.Mesh(geometry, material);
+      var cube = new THREE.Mesh(geometry, material.clone());
       cube.position.y = (distance * h) - 3;
       cube.position.x = (distance * i) - 6;
       cube.position.z = (distance * j);
@@ -51,7 +51,6 @@ function render() {
 }
 render();
 
-var intersected;
 window.addEventListener('mousedown', e => {
   var raycaster = new THREE.Raycaster();
   var mouse = new THREE.Vector2();
@@ -69,9 +68,9 @@ window.addEventListener('mousedown', e => {
         g: 1,
         b: 1
       })) {
-      intersects[0].object.material.color.set('#ff0000');
+      intersects[0].object.material.color.setHex( 0xff0000 );
     } else {
-      intersects[0].object.material.color.set('#fff');
+      intersects[0].object.material.color.setHex( 0xffffff );
     }
   }
 }, false);
