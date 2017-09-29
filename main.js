@@ -43,7 +43,6 @@ window.addEventListener('mousedown', () => {
   var intersects = raycaster.intersectObjects(scene.children);
   for (var i = 0; i < intersects.length; i++) {
     if (cube.material.color.equals({r: 1, g: 1, b: 1})) {
-      console.log(intersects[i].object.material.color);
       intersects[i].object.material.color.set('#ff0000');
     } else {
       intersects[i].object.material.color.set('#fff');
